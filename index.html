@@ -14,14 +14,14 @@
     }
     #container {
       margin: 0 auto;
-      width: 700px;
+      width: 800px;
     }
-    h1 { font-size: 3.8em; color: #c09721; margin-bottom: 3px; }
+    h1 { font-size: 3.2em; color: #FFFFFF; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #c09721; }
-    h3 { text-align: center; color: #c09721; }
-    a { color: #c09721; }
+    h2 { font-size: 1.5em; color: #FFFFFF; }
+    h3 { text-align: center; color: #FFFFFF; }
+    a { color: #FFFFFF; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
@@ -43,14 +43,15 @@
     </div>
 
     <h1><a href="http://github.com/mattsellars/WiiDroneNavigator">WiiDroneNavigator</a>
-      <span class="small">by <a href="http://github.com/mattsellars">mattsellars</a></span></h1>
+      <span class="small">by <a href="http://github.com/mattsellars">Matt Sellars</a></span></h1>
 
     <div class="description">
       Scala application to allow single WiiMote+Nunchuk or dual WiiMote+Nunchuk control of the Parrot AR.Drone quadrocopter.
     </div>
 
     <h2>Contact</h2>
-<p>Matt Sellars (matt.sellars@gmail.com)<br/>      </p>
+    <p>Matt Sellars (Message me on GitHub)       <br/>      
+    </p>
 
 
     <h2>Download</h2>
@@ -64,8 +65,63 @@
       <pre>$ git clone git://github.com/mattsellars/WiiDroneNavigator</pre>
     </p>
 
+    <h2>To Run</h2>
+    <p>
+      First off please take all precautions when flying the drone.  I take no responsibility for your safety when 
+      using this software to operate your drone.  <b>Use of this software is at your own risk.</b>
+      <br/><br/>
+      Right now it's a rough cut, there's no launcher so you can setup the eclipse project by running as follows:
+      <pre> $./gradlew eclipse</pre>
+      Then you will need to create a new scala project making sure you "choose from existing source" in the process.
+      You will need the scala ide plugin with eclipse.  Once in eclipse run the application from the 
+      main <b>class net.ardrone.DroneFlightApplication</b>
+      <br/><br/>
+      Before you run the application do the following:
+      <ul>
+        <li>Connect your computer to your AR.Drone and make sure you get an IP address</li>
+        <li>Run scala application net.ardrone.DroneFlightApplication in eclipse</li>
+      </ul>
+      <br/>
+      When the application runs you will be in a terminal.  Type "help" for commands.
+      <br/><br/>
+    </p>
+    <h2>Connecting a WiiMote + Nunchuck</h2>
+    <p>
+      To connect a WiiMote + Nunchuck do the following:
+      <br/><br/>
+      <ul>
+        <li>Make sure the nunchuck is plugged into the WiiMote</li>
+        <li>Take the battery cover off the WiiMote to expose the small synch button</li>
+        <li>In the application terminal type 'add wiimote' and hit enter then immediately hit the sync button on the back of the WiiMote</li>
+        <li>If all worked you should see a successful sync message and the lights on the front of the WiiMote should remain solid blue.</li>
+        <li>To add a second remote repeate the above steps</li>
+      </ul>
+      <br/>
+    </p>
+    <h2>Application Terminal Commands</h2>
+    <p>
+      See help screen for button flight information.  To test drone communication you can take off land the drone via the terminal input as follows:
+      <br/><br/>
+      Before you take off position the drone on a flat open surface where it is safe to fly, then to take off enter the terminal command:
+      <pre>&gt; take off</pre>
+      <br/><br/>
+      To land the drone enter the terminal command:
+      <pre>&gt; land</pre>
+      Exiting the applicaiton will issue a land command to the drone.
+      <br/><br/>
+      If you crash your drone it will enter emergency mode and will not respond.  When this happens simply pick the
+      drone up and position it for take off again.  Then in the terminal type 'recover'(no quotes) and hit enter.  If
+      the drone reset from emergency mode successfully the lights below the propellers will turn green.  You can then
+      take off again.
+      <br/><br/>
+      To Turn on the video feed from the cameras use the command:
+      <pre>&gt; video on</pre>
+      <br/><br/>
+      In the future I would like to make the application much easier to use.  Until then I hope you have fun.  Now you can
+      tell your friends... I don't always fly my AR.Drone but when I do I fly with dual-Nunchuck controls.
+    </p>
     <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/mattsellars/WiiDroneNavigator">mattsellars/WiiDroneNavigator</a>
+      Get the source code on GitHub : <a href="http://github.com/mattsellars/WiiDroneNavigator">mattsellars/WiiDroneNavigator</a>
     </div>
 
   </div>
