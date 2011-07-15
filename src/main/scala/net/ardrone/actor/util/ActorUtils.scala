@@ -5,7 +5,6 @@ import se.scalablesolutions.akka.actor.Actor
 import se.scalablesolutions.akka.actor.Actor._
 import se.scalablesolutions.akka.actor.ActorRegistry
 import net.ardrone.actor.DroneMovementActor
-import net.ardrone.controller.KeyboardActor
 import net.ardrone.controller.wii.WiiMoteActor
 import net.ardrone.terminal.TerminalActor
 

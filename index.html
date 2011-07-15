@@ -120,6 +120,12 @@
       In the future I would like to make the application much easier to use.  Until then I hope you have fun.  Now you can
       tell your friends... I don't always fly my AR.Drone but when I do I fly with dual-Nunchuck controls.
     </p>
+    <h2>Known Issues</h2>
+    <p>
+      On OS X I ran into an issue where the JVM couldn't talk to the native bluetooth drivers.  It turned out to be
+      because the drivers were 32bit. If you run into a bluetooth connection problem you can try adding the JVM
+      argument '-d32' to your eclipse run configuration arguments.
+    </p>
     <div class="footer">
       Get the source code on GitHub : <a href="http://github.com/mattsellars/WiiDroneNavigator">mattsellars/WiiDroneNavigator</a>
     </div>

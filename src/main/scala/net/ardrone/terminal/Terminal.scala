@@ -4,6 +4,7 @@ import se.scalablesolutions.akka.dispatch.Future
 import se.scalablesolutions.akka.actor.ActorRef
 import se.scalablesolutions.akka.actor.Actor
 import se.scalablesolutions.akka.actor.Actor._
+import se.scalablesolutions.akka.actor.ActorRegistry
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
 import org.apache.log4j.{Logger, Level};
@@ -18,6 +19,7 @@ import net.ardrone.model.WiiMoteCommands
 import net.ardrone.actor.util.ActorUtils._
 import net.ardrone.controller.wii.WiiControlMode
 import net.ardrone.ui.VideoFrameDisplayer
+
 
 class TerminalActor extends Actor {
     def receive = {
@@ -313,9 +315,13 @@ Available Camera Feed Channels:
         printToTerminalWithNoPrompt(" -> This will attempt to land the drone and quit the application.  Continue? (y/n): ")
         val answer = readLine();
         if (answer.equalsIgnoreCase("Y")) {
-            getWiiActorRef ! "QUIT"
-            shutdownDrone
-            System.exit(0)
+            try {
+                getWiiActorRef ! "QUIT"
+                shutdownDrone
+                ActorRegistry.shutdownAll()
+            } finally {
+                System.exit(0)
+            }
         } else {
             printPrompt
         }
