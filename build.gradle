@@ -1,0 +1,36 @@
+apply plugin: 'scala'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+def localMavenRepo = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+
+eclipse.dependsOn('cleanEclipse');
+
+repositories {
+    mavenCentral()
+    mavenRepo urls: ['http://www.scalablesolutions.se/akka/repository/', 'http://maven.ow2.org/maven2/', localMavenRepo]
+}
+
+configurations {
+   //all*.exclude group: 'ch.qos.logback'
+}
+
+dependencies {
+    compile group: 'log4j', name: 'log4j', version: '1.2.16' 
+    compile group: 'net.sf.bluecove', name: 'bluecove', version: '2.1.0'
+    compile group: 'net.sf.bluecove', name: 'bluecove-gpl', version: '2.1.0'
+    //compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.6.1'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.1'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.1'
+    compile group: 'motej', name: 'motej-library', version: '0.9'
+    compile group: 'motej', name: 'motej-extras', version: '0.9'
+    compile (group: 'se.scalablesolutions.akka', name: 'akka-actor_2.8.0', version: '1.0-M1') {
+        exclude group: 'ch.qos.logback'
+    }
+    //compile group: 'se.scalablesolutions.akka', name: 'akka-typed-actor_2.8.0', version: '1.0-M1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-3'
+    jarPath = 'wrapper'
+}
