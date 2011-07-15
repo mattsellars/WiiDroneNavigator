@@ -1,0 +1,11 @@
+bin/*
+.eclipse
+.project
+.classpath
+.gradle
+wrapper/.gradle
+.settings
+log.*
+navDataLog.*
+deps.log
+.scala_dependencies
