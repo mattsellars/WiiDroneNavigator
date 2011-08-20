@@ -232,6 +232,14 @@ package DroneRobotCommunicationCommands {
         override def getChannel = "1"
     }
     
+    case class UseVLibCodecCommand extends GeneralVideoConfigCommand {
+        override def controlName = "video_codec"
+        override def controlValue = 0x20.toString 
+    }
+    case class SetVLibCodecBitRateCommand extends GeneralVideoConfigCommand {
+        override def controlName = "bitrate"
+        override def controlValue = "20000"
+    }
     case class LargeHorizontalSmallVerticalVideoChannelConfigCommand extends VideoChanelConfigCommand {
         override def getChannel = "2"
     }

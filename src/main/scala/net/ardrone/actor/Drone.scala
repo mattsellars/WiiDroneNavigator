@@ -373,6 +373,8 @@ private object Drone {
         
         def startVideo {
             log.info("Starting Video")
+            sendAtCmd(new UseVLibCodecCommand)
+            sendAtCmd(new SetVLibCodecBitRateCommand)
             sendAtCmd(new VideoOnConfigCommand)
         }
         
